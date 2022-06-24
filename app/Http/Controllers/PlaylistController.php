@@ -20,15 +20,15 @@ class PlaylistController extends BaseController {
   }
 
   public function getPlaylist() {
-    $user = Session::get('user_id');
-    $playlist = Playlist::where('user_id', $user)->get();
-    return $playlist;
+    $playlist = Playlist::find(session('playlist_id'));
+    return $playlist->songs()->get();
   }
 
   public function addSong() {
     $request = request();
 
-    $esito = new Playlist;
+    $esito = new Song;
+    $esito->playlist_id = Session::get('playlist_id');
     $esito->user_id = Session::get('user_id');
     $esito->musicid = $request->id;
     $esito->img = $request->img;
@@ -48,7 +48,7 @@ class PlaylistController extends BaseController {
     $request = request();
     $musicid = $request->musicid;
 
-    $res = Playlist::where('user_id', session('user_id'))->where('musicid', $musicid);
+    $res = Song::where('playlist_id', session('playlist_id'))->where('musicid', $musicid);
     $res->delete();
     if($res) {
       $response = array('esito' => true);

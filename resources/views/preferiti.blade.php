@@ -17,7 +17,7 @@
     <li><a>{{ $user['username'] }}</a></li>
     <li><a href ="{{ url('/home') }}">Home</a></li>
     <li><a href ="{{ url('/ricerca') }}">Ricerca</a></li>
-    <li><a href ="{{ url('/playlist') }}">Playlist</a></li>
+    <li><a href ="{{ url('/myplaylist') }}">Playlist</a></li>
     <li><a href ="{{ url('/logout') }}">Logout</a></li>
   </ul>
   <div id="menu" onclick="mobileMenu(this)">
@@ -28,7 +28,7 @@
       <li><a>{{ $user['username'] }}</a></li>
       <li><a href ="{{ url('/home') }}">Home</a></li>
       <li><a href ="{{ url('/ricerca') }}">Ricerca</a></li>
-      <li><a href ="{{ url('/playlist') }}">Playlist</a></li>
+      <li><a href ="{{ url('/myplaylist') }}">Playlist</a></li>
       <li><a href ="{{ url('/logout') }}">Logout</a></li>
     </ul>
   </div>

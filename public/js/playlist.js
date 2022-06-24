@@ -42,7 +42,7 @@ function onResponse(response) {
 }
 
 function caricaPlaylist() {
-  fetch(BASE_URL+"/all").then(onResponse).then(onJsonPlaylist);
+  fetch(BASE_URL+"/getplay").then(onResponse).then(onJsonPlaylist);
 }
 
 function removeSong(event) {

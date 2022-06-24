@@ -94,7 +94,7 @@ function addPreferito(event) {
   formData.append('title', button.parentNode.querySelector('.titolo').textContent);
   formData.append('artist', button.parentNode.querySelector('.artista').textContent);
 
-  fetch(BASE_URL+"/add", {method: 'post', headers: {'X-CSRF-TOKEN': token.value}, body: formData}).then(onContentResponse).then(onJsonPref);
+  fetch(BASE_URL+"/addtopref", {method: 'post', headers: {'X-CSRF-TOKEN': token.value}, body: formData}).then(onContentResponse).then(onJsonPref);
 
   button.parentNode.querySelector('a').innerText = "Aggiunto!"
   button.parentNode.querySelector('a').classList.add('added');
@@ -110,7 +110,7 @@ function addPlaylist(event) {
   formData.append('title', button.parentNode.querySelector('.titolo').textContent);
   formData.append('artist', button.parentNode.querySelector('.artista').textContent);
 
-  fetch(BASE_URL+"/addplay", {method: 'post', headers: {'X-CSRF-TOKEN': token.value}, body: formData}).then(onContentResponse).then(onJsonPref);
+  fetch(BASE_URL+"/addtoplay", {method: 'post', headers: {'X-CSRF-TOKEN': token.value}, body: formData}).then(onContentResponse).then(onJsonPref);
 
   button.parentNode.querySelector('#playlist').innerText = "Aggiunto!"
   button.parentNode.querySelector('#playlist').classList.add('added');

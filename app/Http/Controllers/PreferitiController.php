@@ -24,6 +24,26 @@ class PreferitiController extends BaseController {
     return $user->preferiti()->get();
   }
 
+  public function addPref() {
+    $request = request();
+
+    $esito = new Preferito;
+    $esito->user_id = Session::get('user_id');
+    $esito->musicid = $request->id;
+    $esito->img = $request->img;
+    $esito->titolo = $request->title;
+    $esito->artista = $request->artist;
+
+    $esito->save();
+    if($esito) {
+      $response = array('esito' => true);
+    } else {
+      $response = array('esito' => false);
+    }
+
+    return $response;
+  }
+
   public function removePrefs() {
     $request = request();
     $musicid = $request->musicid;

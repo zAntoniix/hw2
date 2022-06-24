@@ -6,8 +6,8 @@ use Illuminate\Routing\Controller as BaseController;
 use App\Models\User;
 use App\Models\Preferito;
 use App\Models\Playlist;
+use App\Models\Song;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
 
 class RicercaController extends BaseController {
@@ -57,7 +57,7 @@ class RicercaController extends BaseController {
         $p = false;
       }
 
-      $playlist = Playlist::where('user_id', $userid)->where('musicid', $id)->first();
+      $playlist = Song::where('playlist_id', session('playlist_id'))->where('musicid', $id)->first();
       if($playlist) {
         $pl = true;
       } else {
@@ -110,7 +110,7 @@ class RicercaController extends BaseController {
         $p = false;
       }
 
-      $playlist = Playlist::where('user_id', $userid)->where('musicid', $id)->first();
+      $playlist = Song::where('playlist_id', session('playlist_id'))->where('musicid', $id)->first();
       if($playlist) {
         $pl = true;
       } else {
@@ -126,24 +126,5 @@ class RicercaController extends BaseController {
 
     $jsonfinale = array("tracks" => $tracce, "next" => $json['tracks']['next'], "previous" => $json['tracks']['previous']);
     return $jsonfinale;
-  }
-
-  public function addPref() {
-    $request = request();
-
-    $esito = new Preferito;
-    $esito->user_id = Session::get('user_id');
-    $esito->musicid = $request->id;
-    $esito->img = $request->img;
-    $esito->titolo = $request->title;
-    $esito->artista = $request->artist;
-
-    $esito->save();
-    if($esito) {
-      $response = array('esito' => true);
-    } else {
-      $response = array('esito' => false);
-    }
-    return $response;
   }
 }

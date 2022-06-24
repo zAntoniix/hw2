@@ -167,6 +167,12 @@ section {
   background-color: black;
 }
 
+.added {
+  color: rgb(233, 181, 10) !important;
+  background-color: black !important;
+  cursor: default !important
+}
+
 footer {
   padding: 20px;
   background-color: black;

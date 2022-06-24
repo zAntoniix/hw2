@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\User;
+use App\Models\Playlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -25,6 +26,13 @@ class SignupController extends BaseController {
       $user->save();
       if($user) {
         Session::put('user_id', $user->id);
+        $play = new Playlist;
+        $play->user_id = $user->id;
+        $play->nome = $request['username']."'s playlist";
+        $play->save();
+        if($play) {
+          Session::put('playlist_id', $play->_id);
+        }
         return redirect('home');
       }
     } else {

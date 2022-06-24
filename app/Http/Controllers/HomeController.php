@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Content;
 use App\Models\Evidenza;
 use App\Models\Preferito;
-use App\Models\Playlist;
+use App\Models\Song;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends BaseController {
@@ -39,7 +39,7 @@ class HomeController extends BaseController {
         $p = false;
       }
 
-      $playlist = Playlist::where('user_id', session('user_id'))->where('musicid', $id)->first();
+      $playlist = Song::where('playlist_id', session('playlist_id'))->where('musicid', $id)->first();
       if($playlist) {
         $pl = true;
       } else {

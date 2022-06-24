@@ -18,7 +18,7 @@ function onSpotifyJson(json) {
     const artista = document.createElement('span');
     artista.classList.add('artista');
     artista.textContent = artist;
-    id = document.createElement('p');
+    const id = document.createElement('p');
     id.textContent = track_data.id;
 
     const preferito = document.createElement('a');
@@ -43,9 +43,9 @@ function onSpotifyJson(json) {
     song.appendChild(img);
     song.appendChild(titolo);
     song.appendChild(artista);
+    song.appendChild(id);
     song.appendChild(preferito);
     song.appendChild(playlist);
-    song.appendChild(id);
     songs.appendChild(song);
   }
   
@@ -72,7 +72,7 @@ function onSpotifyJson(json) {
   }
 }
 
-function onJsonPref(json) {
+function onJsonAdd(json) {
   console.log("Aggiunto: "+ json.esito);
 }
 
@@ -100,7 +100,7 @@ function addPlaylist(event) {
   formData.append('title', button.parentNode.querySelector('.titolo').textContent);
   formData.append('artist', button.parentNode.querySelector('.artista').textContent);
 
-  fetch(BASE_URL+"/addplay", {method: 'post', headers: {'X-CSRF-TOKEN': token.value}, body: formData}).then(onResponse).then(onJsonPref);
+  fetch(BASE_URL+"/addtoplay", {method: 'post', headers: {'X-CSRF-TOKEN': token.value}, body: formData}).then(onResponse).then(onJsonAdd);
 
   button.parentNode.querySelector('#playlist').innerText = "Aggiunto!"
   button.parentNode.querySelector('#playlist').classList.add('added');
@@ -116,7 +116,7 @@ function addPreferito(event) {
   formData.append('title', button.parentNode.querySelector('.titolo').textContent);
   formData.append('artist', button.parentNode.querySelector('.artista').textContent);
 
-  fetch(BASE_URL+"/add", {method: 'post', headers: {'X-CSRF-TOKEN': token.value}, body: formData}).then(onResponse).then(onJsonPref);
+  fetch(BASE_URL+"/addtopref", {method: 'post', headers: {'X-CSRF-TOKEN': token.value}, body: formData}).then(onResponse).then(onJsonAdd);
 
   button.parentNode.querySelector('a').innerText = "Aggiunto!"
   button.parentNode.querySelector('a').classList.add('added');
