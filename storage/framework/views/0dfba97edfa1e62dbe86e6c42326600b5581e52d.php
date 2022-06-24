@@ -17,7 +17,7 @@
       <li><a><?php echo e('Benvenuto, '.$user['username']); ?></a></li>
       <li><a href ="<?php echo e(url('/ricerca')); ?>">Ricerca</a></li>
       <li><a href ="<?php echo e(url('/preferiti')); ?>">Preferiti</a></li>
-      <li><a href ="<?php echo e(url('/playlist')); ?>">Playlist</a></li>
+      <li><a href ="<?php echo e(url('/myplaylist')); ?>">Playlist</a></li>
       <li><a href ="<?php echo e(url('/logout')); ?>">Logout</a></li>
     </ul>
   <div id="menu" onclick="mobileMenu(this)">
@@ -28,7 +28,7 @@
       <li><a><?php echo e('Benvenuto, '.$user['username']); ?></a></li>
       <li><a href ="<?php echo e(url('/ricerca')); ?>">Ricerca</a></li>
       <li><a href ="<?php echo e(url('/preferiti')); ?>">Preferiti</a></li>
-      <li><a href ="<?php echo e(url('/playlist')); ?>">Playlist</a></li>
+      <li><a href ="<?php echo e(url('/myplaylist')); ?>">Playlist</a></li>
       <li><a href ="<?php echo e(url('/logout')); ?>">Logout</a></li>
     </ul>
   </div>
